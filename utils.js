@@ -1,27 +1,14 @@
-function place_in_bin(rgb, number_of_bins) {
+function place_in_bin_according_to_brightness(rgb, number_of_bins) {
     // given a color and the number of bins
-    // return which bin it should fit in (brightest is lowst)
+    // return which bin it should fit in (brightest is lowest)
 
     let bright = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
     return Math.floor(map(bright, 0, 255, 0, number_of_bins));
 }
 
-function do_text(x, y, params) {
-    palate = params.palate;
-
-    fill('black');
-    textFont('Helvetica ');
-    textSize(20);
-
-    let bin = place_in_bin(r, g, b);
-    let letter = palate[bin];
-
-    text(letter, x, y);
-}
-
 function do_thing_for_each_pixel_of_image(
     img,
-    fn = do_text,
+    fn,
     pixel_w = 1,
     pixel_h = 1,
     mirror = false,
@@ -35,10 +22,10 @@ function do_thing_for_each_pixel_of_image(
             // mirror if needed
             let x_loc = x;
             if (mirror == true) {
-                let x_loc = img.width - PIXEL_W - x;
+                x_loc = img.width - PIXEL_W - x;
             }
 
-            fn(x_loc, y, params);
+            fn(x_loc, y, rgb, params);
 
             x = x + pixel_w - 1;
         }
