@@ -3,5 +3,5 @@
     "*.js",
     "libraries/*.js",
     "/Users/jack.rybarczyk/.vscode/extensions/samplavigne.p5-vscode-1.2.11/p5types/global.d.ts"
-  ]
+, "code/lettersketch.js", "code/utils.js", "code/threshhold.js", "code/dogssketch.js",
 }
