@@ -9,8 +9,8 @@ function place_in_bin_according_to_brightness(rgb, number_of_bins) {
 function do_text(x, y, rgb, params) {
     palate = params.palate;
 
-    fill('blue');
-    textFont('Courier bold');
+    fill('black');
+    textFont('Helvetica');
     textSize(params.textsize);
 
     let bin = place_in_bin_according_to_brightness(rgb, palate.length);
@@ -26,7 +26,7 @@ function do_thresh(x, y, rgb, params) {
     if (bright >= params.thresh) {
         fill('white');
     } else {
-        fill('red');
+        fill('black');
     }
     rect(x, y, params.width, params.height);
 }
