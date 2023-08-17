@@ -1,6 +1,0 @@
-# ignore ALL .log files
-*.jpeg
-*.jpg 
-*.png
-
-images/
