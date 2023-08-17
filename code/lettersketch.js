@@ -11,8 +11,9 @@ const TEXTSIZE = 1.2 * PIXEL_W;
 
 // const PALATE = ['JACK', 'JJJ', 'A', '!?', '::', '-', '.', '`'];
 // const PALATE = [':)', '+', '-', '`'];
-const PALATE =
-    '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~i!lI;:,"^`".';
+// const PALATE =
+//     '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~i!lI;:,"^`".';
+const PALATE = ['$#', 'A', 'i', '?', ' '];
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -21,11 +22,26 @@ function setup() {
     capture.size(width, height);
     capture.hide();
     frameRate(10);
+
+    
+    input = createInput();
+    input.position(20, 65);
+
+
 }
 
 function draw() {
     clear();
     capture.loadPixels();
+
+    const myPalate = input.value().split(' ');
+    
+    if(input.value().length > 1){
+        palateToDisplay = myPalate
+    } else{
+        palateToDisplay = PALATE;
+    }  
+
 
     do_thing_for_each_pixel_of_image(
         capture,
@@ -33,6 +49,6 @@ function draw() {
         PIXEL_W,
         PIXEL_H,
         (mirror = true),
-        (params = { palate: PALATE, textsize: TEXTSIZE }),
+        (params = { palate: palateToDisplay , textsize: TEXTSIZE }),
     );
 }
