@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"CODEOWNERS": "ignore",
+			".gitignore": "ignore",
+			".prettierignore": "ignore",
+			".git-blame-ignore-revs": "ignore"
+		},
+		"typescript.tsdk": ".yarn/sdks/typescript/lib",
+		"typescript.enablePromptUseWorkspaceTsdk": true
+	}
+}
