@@ -2,6 +2,11 @@
 // like ascii art
 // import { place_in_bin } from './utils.js';
 
+
+/*
+ some fun palettes to type: 
+  - "  /  ......................................|||| ...            ™️   "
+*/
 let capture;
 const WIDTH = 800;
 const HEIGHT = 800;
@@ -16,7 +21,7 @@ const TEXTSIZE = 1.2 * PIXEL_W;
 const PALATE = ['$#', 'A', 'i', '?', ' '];
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    let canvas = createCanvas(windowWidth, windowHeight);
 
     capture = createCapture(VIDEO);
     capture.size(width, height);
@@ -32,6 +37,7 @@ function setup() {
 
 function draw() {
     clear();
+    background(220);
     capture.loadPixels();
 
     const myPalate = input.value().split(' ');
@@ -52,3 +58,12 @@ function draw() {
         (params = { palate: palateToDisplay , textsize: TEXTSIZE }),
     );
 }
+
+
+function keyTyped() {
+    if (key === 's') {
+        const date = new Date();
+        saveCanvas(canvas,  `myCanvas-${date}`, 'jpg');
+    }
+  }
+  
