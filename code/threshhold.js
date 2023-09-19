@@ -1,4 +1,6 @@
 // photoshop threshold tool clone
+// further to the left means less black
+
 let capture;
 const WIDTH = 800;
 const HEIGHT = 800;

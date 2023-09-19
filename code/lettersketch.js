@@ -1,6 +1,6 @@
 // letters
-// like ascii art
-// import { place_in_bin } from './utils.js';
+// like ascii art,
+// but you can type what letters you want; live
 
 
 /*

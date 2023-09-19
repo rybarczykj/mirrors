@@ -1,5 +1,6 @@
 // loop through dogs
 // and show them in ascii
+// not currently working; may abandon
 
 let img;
 const WIDTH = 1500;

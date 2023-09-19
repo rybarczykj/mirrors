@@ -1,5 +1,7 @@
-let capture;
+// a really green mirror.
+// one  of my first p5.js ventures
 
+let capture;
 function setup() {
 
   var a = createCanvas(windowWidth, windowHeight);
