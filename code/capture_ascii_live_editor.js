@@ -2,7 +2,6 @@
 // like ascii art,
 // but you can type what letters you want; live
 
-
 /*
  some fun palettes to type: 
   - "  /  ......................................|||| ...            ™️   "
@@ -28,7 +27,7 @@ function setup() {
     capture.hide();
     frameRate(10);
 
-    
+
     input = createInput();
     input.position(20, 65);
 
@@ -41,12 +40,12 @@ function draw() {
     capture.loadPixels();
 
     const myPalate = input.value().split(' ');
-    
-    if(input.value().length > 1){
+
+    if (input.value().length > 1) {
         palateToDisplay = myPalate
-    } else{
+    } else {
         palateToDisplay = PALATE;
-    }  
+    }
 
 
     do_thing_for_each_pixel_of_image(
@@ -55,7 +54,7 @@ function draw() {
         PIXEL_W,
         PIXEL_H,
         (mirror = true),
-        (params = { palate: palateToDisplay , textsize: TEXTSIZE }),
+        (params = { palate: palateToDisplay, textsize: TEXTSIZE }),
     );
 }
 
@@ -63,7 +62,44 @@ function draw() {
 function keyTyped() {
     if (key === 's') {
         const date = new Date();
-        saveCanvas(canvas,  `myCanvas-${date}`, 'jpg');
+        saveCanvas(canvas, `myCanvas-${date}`, 'jpg');
     }
-  }
-  
+}
+
+
+function do_thing_for_each_pixel_of_image(
+    img,
+    fn,
+    pixel_w = 1,
+    pixel_h = 1,
+    mirror = false,
+    params = null,
+) {
+    for (let y = 0; y < img.height; y = y + pixel_h) {
+        for (let x = 0; x < img.width; x = x + pixel_w) {
+            index = (y * img.width + x) * 4;
+            let rgb = img.pixels.slice(index, index + 3);
+
+            // mirror if needed
+            let x_loc = x;
+            if (mirror == true) {
+                x_loc = width - PIXEL_W - x;
+            }
+
+            fn(x_loc, y, rgb, params);
+        }
+    }
+}
+
+function do_text(x, y, rgb, params) {
+    palate = params.palate;
+
+    fill('black');
+    textFont('Helvetica');
+    textSize(params.textsize);
+
+    let bin = place_in_bin_according_to_brightness(rgb, palate.length);
+    let letter = palate[bin];
+
+    text(letter, x, y);
+}

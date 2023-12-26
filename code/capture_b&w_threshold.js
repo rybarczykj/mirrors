@@ -10,7 +10,7 @@ const PIXEL_H = 2;
 // const THRESH = 100;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(500, 300);
 
     capture = createCapture(VIDEO);
     capture.size(width, height);

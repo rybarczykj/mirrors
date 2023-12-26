@@ -37,7 +37,7 @@
     "typescript.tsdk": ".yarn/sdks/typescript/lib",
     "editor.codeActionsOnSaveTimeout": 3000,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": "explicit"
     },
     "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
     "prettier.configPath": "prettier.config.cjs",
@@ -48,5 +48,8 @@
         "**/good-doggo/dist": true
     },
     "typescript.enablePromptUseWorkspaceTsdk": true,
-    "css.customData": ["./packages/druids-ui/druids.css-data.json"]
+    "css.customData": [
+        "./packages/druids-ui/druids.css-data.json"
+    ],
+    "liveServer.settings.port": 5501
 }
